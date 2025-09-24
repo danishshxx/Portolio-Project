@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gweh's Y2K Website</title>
+    
+    <!-- 1. Memuat font pixel dan font sans-serif dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- 2. Di sinilah semua 'sihir' styling Y2K terjadi -->
+    <style>
+        /* Variabel warna biar gampang ganti tema */
+        :root {
+            --bg-color: #dbeafe; /* Biru muda pastel */
+            --card-bg: #ffffff;
+            --text-color: #374151; /* Abu-abu gelap */
+            --header-color: #1e3a8a; /* Biru tua */
+            --accent-color: #ec4899; /* Pink cerah */
+            --border-color: #1e3a8a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Background pola titik-titik untuk nuansa digital */
+            background-image: radial-gradient(var(--header-color) 0.5px, transparent 0.5px);
+            background-size: 15px 15px;
+            font-family: 'Inter', sans-serif; /* Font modern untuk paragraf */
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container utama untuk semua konten */
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        /* 'Card' atau 'jendela' untuk setiap bagian konten */
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            /* Bayangan tegas khas Y2K, bukan blur modern */
+            box-shadow: 6px 6px 0px var(--border-color);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px var(--border-color);
+        }
+
+        /* Styling untuk semua heading, menggunakan font pixel */
+        h1, h2 {
+            font-family: 'Silkscreen', cursive;
+            color: var(--header-color);
+            text-shadow: 2px 2px 0px #bfdbfe; /* Efek bayangan teks */
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Styling daftar hobi */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Menambahkan ikon piksel hati sebagai bullet point */
+        ul li::before {
+            content: '♡';
+            font-family: 'Silkscreen', cursive;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-right: 12px;
+        }
+
+        /* Link email dengan warna aksen */
+        a {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            filter: brightness(1.1);
+        }
+
+        /* Gambar dengan border yang serasi */
+        img {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        /* Styling untuk formulir */
+        form {
+            margin-top: 10px;
+        }
+        
+        label {
+            font-weight: bold;
+            font-family: 'Silkscreen', cursive;
+            color: var(--header-color);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box; /* Agar padding tidak merusak lebar */
+            margin-bottom: 16px;
+        }
+
+        input:focus {
+            outline: 2px solid var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        /* Tombol dengan gaya pixel yang 'chunky' */
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-family: 'Silkscreen', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 4px 4px 0px var(--border-color);
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #f9a8d4;
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px var(--border-color);
+        }
+        
+        button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Kartu 1: Header -->
+        <div class="card">
+            <h1>Selamat datang di website gweh</h1>
+            <p>Ini adalah paragraf pertama di halaman HTML ini. HTML adalah bahasa markup yang digunakan untuk membuat STRUKTUR website</p>
+        </div>
+
+        <!-- Kartu 2: Hobi dan Kontak -->
+        <div class="card">
+            <h2>Daftar hobi :</h2>
+            <ul>
+                <li>Nonton drakor</li>
+                <li>Ngoding</li>
+                <li>dengerin musik</li>
+            </ul>
+
+            <h2>Kontak saya</h2>
+            <p>hubungi email saya di <a href="mailto:dnshconquer@gmail.com">Email gweh</a></p>
+        </div>
+        
+        <!-- Kartu 3: Gambar -->
+        <div class="card">
+            <h2>Bukankah ini my...</h2>
+            <!-- Menggunakan placeholder agar gambar bisa tampil -->
+            <img src="9b03ef1341358efead7c78f51469d77c.jpg" alt="Y2K Aesthetic" >
+        </div>
+
+        <!-- Kartu 4: Formulir -->
+        <div class="card">
+            <h2>Formulir pendaftaran</h2>
+            <form action="#" method="post">
+                <label for="Nama">Nama :</label>
+                <input type="text" id="Nama" name="Nama" required>
+                
+                <label for="Email">Email :</label>
+                <input type="email" id="Email" name="Email" required>
+                
+                <button type="submit">Daftar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
