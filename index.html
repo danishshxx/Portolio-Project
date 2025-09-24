@@ -1,227 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gweh's Y2K Website</title>
+    <title>Portofolio | Nama Anda</title>
     
-    <!-- 1. Memuat font pixel dan font sans-serif dari Google Fonts -->
+    <!-- Memuat Font dari Google Fonts (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- 2. Di sinilah semua 'sihir' styling Y2K terjadi -->
+    <!-- Ikon dari Font Awesome (untuk ikon sosial media) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* Variabel warna biar gampang ganti tema */
+        /* === VARIABEL WARNA & SETUP DASAR === */
         :root {
-            --bg-color: #dbeafe; /* Biru muda pastel */
-            --card-bg: #ffffff;
-            --text-color: #374151; /* Abu-abu gelap */
-            --header-color: #1e3a8a; /* Biru tua */
-            --accent-color: #ec4899; /* Pink cerah */
-            --border-color: #1e3a8a;
+            --bg-dark-primary: #0f2043; /* Background utama yang sangat gelap */
+            --bg-dark-secondary: #1F2937; /* Background untuk card/elemen */
+            --primary-accent: #8B5CF6; /* Warna ungu sebagai aksen utama */
+            --text-light: #F3F4F6; /* Warna teks utama (putih pudar) */
+            --text-muted: #9CA3AF; /* Warna teks sekunder (abu-abu) */
+        }
+
+        /* Reset CSS dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            /* Background pola titik-titik untuk nuansa digital */
-            background-image: radial-gradient(var(--header-color) 0.5px, transparent 0.5px);
-            background-size: 15px 15px;
-            font-family: 'Inter', sans-serif; /* Font modern untuk paragraf */
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        /* Container utama untuk semua konten */
-        .container {
-            max-width: 600px;
-            width: 100%;
-        }
-        
-        /* 'Card' atau 'jendela' untuk setiap bagian konten */
-        .card {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            /* Bayangan tegas khas Y2K, bukan blur modern */
-            box-shadow: 6px 6px 0px var(--border-color);
-            transition: all 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0px var(--border-color);
-        }
-
-        /* Styling untuk semua heading, menggunakan font pixel */
-        h1, h2 {
-            font-family: 'Silkscreen', cursive;
-            color: var(--header-color);
-            text-shadow: 2px 2px 0px #bfdbfe; /* Efek bayangan teks */
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        p {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark-primary);
+            color: var(--text-light);
             line-height: 1.6;
         }
 
-        /* Styling daftar hobi */
-        ul {
-            list-style: none;
-            padding-left: 0;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        ul li {
-            padding: 8px 0;
+        /* === HEADER & NAVIGASI === */
+        header {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            border-bottom: 1px solid var(--bg-dark-secondary);
+        }
+
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        /* Menambahkan ikon piksel hati sebagai bullet point */
-        ul li::before {
-            content: '♡';
-            font-family: 'Silkscreen', cursive;
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-right: 12px;
-        }
-
-        /* Link email dengan warna aksen */
-        a {
-            color: var(--accent-color);
-            font-weight: bold;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
             text-decoration: none;
-            transition: all 0.2s ease;
+        }
+        .logo span { color: var(--primary-accent); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
 
-        a:hover {
-            text-decoration: underline;
-            filter: brightness(1.1);
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        /* Gambar dengan border yang serasi */
-        img {
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            max-width: 100%;
-            height: auto;
-            margin-top: 10px;
+        nav ul li a:hover {
+            color: var(--primary-accent);
         }
 
-        /* Styling untuk formulir */
-        form {
-            margin-top: 10px;
-        }
-        
-        label {
-            font-weight: bold;
-            font-family: 'Silkscreen', cursive;
-            color: var(--header-color);
-            display: block;
-            margin-bottom: 8px;
+        .download-cv-btn {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        input[type="text"],
-        input[type="email"] {
+        .download-cv-btn:hover {
+            background-color: var(--primary-accent);
+            color: var(--text-light);
+        }
+
+        /* === HERO SECTION (BAGIAN ATAS) === */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text h3 {
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0.5rem 0;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--primary-accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-info {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero-info p { margin-bottom: 0.5rem; }
+
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--primary-accent);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 350px;
             width: 100%;
-            padding: 10px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box; /* Agar padding tidak merusak lebar */
-            margin-bottom: 16px;
+            border-radius: 20px;
+            border: 5px solid var(--bg-dark-secondary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        input:focus {
-            outline: 2px solid var(--accent-color);
-            border-color: var(--accent-color);
+        /* === ABOUT SECTION === */
+        #about {
+            padding: 5rem 0;
+            background-color: var(--bg-dark-secondary);
         }
-        
-        /* Tombol dengan gaya pixel yang 'chunky' */
-        button {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-family: 'Silkscreen', cursive;
-            font-size: 1rem;
-            cursor: pointer;
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p {
+            color: var(--primary-accent);
+            font-weight: 500;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-details-list {
+            list-style: none;
+        }
+
+        .about-details-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #374151;
+        }
+        .about-details-list li strong {
+            color: var(--text-light);
+        }
+        .about-details-list li span {
+            color: var(--text-muted);
+        }
+
+        .about-image img {
             width: 100%;
-            box-shadow: 4px 4px 0px var(--border-color);
-            transition: all 0.2s ease-in-out;
+            border-radius: 15px;
         }
 
-        button:hover {
-            background-color: #f9a8d4;
-            transform: translate(-1px, -1px);
-            box-shadow: 5px 5px 0px var(--border-color);
+        /* === SKILLS SECTION === */
+        #skills {
+            padding: 5rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-dark-secondary);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            border-bottom: 5px solid var(--primary-accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-light);
         }
         
-        button:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px var(--border-color);
+        .skill-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        /* === FOOTER === */
+        footer {
+            background-color: var(--bg-dark-secondary);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            color: var(--text-muted);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image {
+                grid-row: 1; /* Pindah gambar ke atas di layar kecil */
+                margin-bottom: 2rem;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            nav ul { display: none; } /* Sederhanakan navigasi, bisa dikembangkan dengan menu hamburger */
+        }
+        
+        @media (max-width: 768px) {
+            .about-content, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
         }
 
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Kartu 1: Header -->
-        <div class="card">
-            <h1>Selamat datang di website gweh</h1>
-            <p>Ini adalah paragraf pertama di halaman HTML ini. HTML adalah bahasa markup yang digunakan untuk membuat STRUKTUR website</p>
-        </div>
 
-        <!-- Kartu 2: Hobi dan Kontak -->
-        <div class="card">
-            <h2>Daftar hobi :</h2>
+    <!-- Header & Navigasi -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Porto<span>folio.</span></a>
             <ul>
-                <li>Nonton drakor</li>
-                <li>Ngoding</li>
-                <li>dengerin musik</li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
+            <a href="#" class="download-cv-btn">Download CV</a>
+        </nav>
+    </header>
 
-            <h2>Kontak saya</h2>
-            <p>hubungi email saya di <a href="mailto:dnshconquer@gmail.com">Email gweh</a></p>
-        </div>
-        
-        <!-- Kartu 3: Gambar -->
-        <div class="card">
-            <h2>Bukankah ini my...</h2>
-            <!-- Menggunakan placeholder agar gambar bisa tampil -->
-            <img src="9b03ef1341358efead7c78f51469d77c.jpg" alt="Y2K Aesthetic" >
-        </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h3>HELLO I'M</h3>
+                    <h1>Muhammad Danish</h1>
+                    <h2>Data Scientist and ML Engineer</h2>
+                    <div class="hero-info">
+                        <p>17 Belibis Terusan street, Jakarta, Indonesia</p>
+                        <p>dnshconquer@gmail.com</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="unnamed.png" alt="Foto Saya hehe">
+                </div>
+            </div>
+        </section>
 
-        <!-- Kartu 4: Formulir -->
-        <div class="card">
-            <h2>Formulir pendaftaran</h2>
-            <form action="#" method="post">
-                <label for="Nama">Nama :</label>
-                <input type="text" id="Nama" name="Nama" required>
-                
-                <label for="Email">Email :</label>
-                <input type="email" id="Email" name="Email" required>
-                
-                <button type="submit">Daftar</button>
-            </form>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <p>WHO I AM</p>
+                    <h2>About My Resume</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-details">
+                        <ul class="about-details-list">
+                            <li><strong>Age:</strong> <span>19</span></li>
+                            <li><strong>Residence:</strong> <span>Indonesia</span></li>
+                            <li><strong>Address:</strong> <span>17 Belibis Terusan Street, Special city of Jakarta</span></li>
+                            <li><strong>E-mail:</strong> <span>dnshconquer@gmail.com</span></li>
+                            <li><strong>Phone:</strong> <span>bentar dlu</span></li>
+                            <li><strong>Freelance:</strong> <span>Available</span></li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://placehold.co/500x350/1F2937/E5E7EB?text=Workspace" alt="Gambar tentang saya">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>50%</h3>
+                        <p>Graphic Design</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>75%</h3>
+                        <p>Development</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>38%</h3>
+                        <p>Marketing Ideas</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>63%</h3>
+                        <p>Web Management</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DANXHDSGN. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
+
 </body>
 </html>
